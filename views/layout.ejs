@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/jquery.toast.min.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header" class="alt">
+        <a href="/" class="logo"><strong>Computer Store</strong> <span>Website</span></a>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+
+    <!-- Menu -->
+    <nav id="menu">
+        <ul class="links">
+            <li class="active"> <a href="/">Home </a> </li>
+
+            <li> <a href="/products">Products</a> </li>
+
+            <li> <a href="/checkout">Checkout</a> </li>
+
+            <li><a href="/contact">Contact Us</a></li>
+
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
+
+                <ul class="dropdown-menu">
+                    <li> <a href="/about-us">About Us</a> </li>
+                    <li><a href="/team">Team</a></li>
+                    <li> <a href="/blog">Blog</a> </li>
+
+                    <li><a href="/testimonials">Testimonials</a></li>
+
+                    <li><a href="/terms">Terms</a></li>
+                </ul>
+            </li>
+
+            <% if (typeof user != 'undefined' && user) { %>
+                <li><a href="/logout">Logout</a></li>
+            <% } else { %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            <% } %>
+        </ul>
+    </nav>
+
+    <%- body %>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="icons">
+                <li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+            </ul>
+            <ul class="copyright">
+                <li>Copyright © 2020 Company Name - Template by:</li>
+                <li> <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/jquery.toast.min.js"></script>
+<script src="assets/js/main.js"></script>
+<% if (typeof error != 'undefined') {%>
+    <script type="text/javascript">
+        var errorMsg = '<%= error %>';
+        $(document).ready(function() {
+            $.toast({
+                position: 'bottom-right',
+                text: errorMsg
+            })
+        })
+    </script>
+<%}%>
+<%- defineContent('script') %>
+</body>
+</html>
